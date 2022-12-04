@@ -1,5 +1,12 @@
 # digit_shear_force_estimation
 A ROS Package that enables shear force estimation with Facebooks DIGIT Tactile sensors
+
+Required dependencies:
+OpenCV
+Digit
+PRMessages
+
+
 How to run:
 
 1. Run `catkin build`
