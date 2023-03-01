@@ -16,4 +16,5 @@ def tare_server():
     rospy.spin()
 
 if __name__ == "__main__":
-    tare_server()
+    # tare_server()
+    pass

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-PKG = 'collector'
-import roslib; roslib.load_manifest(PKG)
+# PKG = 'collector'
+# import roslib; roslib.load_manifest(PKG)
 import rospy
 from rospy.numpy_msg import numpy_msg
 from rospy_tutorials.msg import Floats
@@ -20,7 +20,7 @@ def callback(data):
 def disp_img():
 
     rospy.init_node('visualizer', anonymous=True)
-    rospy.Subscriber('floats', numpy_msg(Image), callback)
+    rospy.Subscriber('digit_img', numpy_msg(Image), callback)
 
     rospy.spin()
 
