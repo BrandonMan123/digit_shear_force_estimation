@@ -20,7 +20,7 @@ import numpy
 
 def talker():
     img_pub = rospy.Publisher('digit_img', numpy_msg(Image),queue_size=10)
-    magnitude_pub = rospy.Publisher("digit_forces", Vector3, queue_size=10)
+    magnitude_pub = rospy.Publisher("digit_forces", Float64, queue_size=10)
     rospy.init_node('talker', anonymous=True)
     reset_service = rospy.Service('reset_point', ResetPoint, handle_reset)
     s = rospy.Service('tare', Tare, handle_tare)
@@ -60,12 +60,12 @@ def talker():
             curr_img = a 
             vField = flow.computeOpticalFlow(init_img, curr_img, viz)
             # print(f"magnitude: {vField.get_magnitude() }")
-            vector = vField.get_force_vector()-tare_offset
-            msg = Vector3()
-            msg.x = vector[0]
-            msg.z = vector[1]
-            magnitude_pub.publish(msg)
-            # magnitude_pub.publish(vField.get_magnitude()-tare_offset)
+            # vector = vField.get_force_vector()-tare_offset
+            # msg = Vector3()
+            # msg.x = vector[0]
+            # msg.z = vector[1]
+            # magnitude_pub.publish(msg)
+            magnitude_pub.publish(vField.get_magnitude()-tare_offset)
 
 
         msg = bridge.cv2_to_imgmsg(a)
